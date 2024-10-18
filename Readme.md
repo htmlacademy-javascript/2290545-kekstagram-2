@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Алексей Пыханов](https://up.htmlacademy.ru/javascript-individual/2/user/2290545).
-* Наставник: `Неизвестно`.
+* Наставник: [Юрий Белобородов](https://htmlacademy.ru/profile/id514591).
 
 ---
 
