@@ -9,6 +9,8 @@ const NAMES = ['Егор, Иван, Василий, Александр, Дарь
 
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
+const MIN_COMMENTS = 0;
+const MAX_COMMENTS = 30;
 const ARRAY_LENGTH = 25;
 
 const getRandomInteger = (a, b) => {
@@ -43,7 +45,7 @@ const createComment = () => {
   };
 };
 
-const numComments = getRandomInteger(MIN_LIKES);
+const numComments = getRandomInteger(MIN_COMMENTS, MAX_COMMENTS);
 
 const numLikes = getRandomInteger(MIN_LIKES, MAX_LIKES);
 
