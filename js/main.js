@@ -7,7 +7,7 @@ const MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-const NAMES = ['Егор, Иван, Василий, Александр, Дарья, Мария, Петр, Наталья, Дмитрий, Михаил, Ирина, Татьяна'];
+const NAMES = ['Егор', 'Иван', 'Василий', 'Александр', 'Дарья', 'Мария', 'Петр', 'Наталья', 'Дмитрий', 'Михаил',];
 
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
@@ -66,4 +66,5 @@ const createPhoto = () => {
 };
 
 const photoArray = Array.from({length: ARRAY_LENGTH}, createPhoto());
-console.log(photoArray);
+
+
