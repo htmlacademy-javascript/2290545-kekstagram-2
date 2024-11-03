@@ -1,5 +1,5 @@
-import {photoArray} from './data';
+import {getPhotoArray} from './data';
 
-photoArray();
+getPhotoArray();
 
 

@@ -1,6 +1,6 @@
 import {getRandomInteger} from './utils';
 
-const MESSAGES = [
+export const MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -9,7 +9,7 @@ const MESSAGES = [
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
 
-const NAMES = ['Егор', 'Иван', 'Василий', 'Александр', 'Дарья', 'Мария', 'Петр', 'Наталья', 'Дмитрий', 'Михаил',];
+export const NAMES = ['Егор', 'Иван', 'Василий', 'Александр', 'Дарья', 'Мария', 'Петр', 'Наталья', 'Дмитрий', 'Михаил',];
 
 const MIN_LIKES = 15;
 const MAX_LIKES = 200;
@@ -17,7 +17,7 @@ const MIN_COMMENTS = 0;
 const MAX_COMMENTS = 30;
 const ARRAY_LENGTH = 25;
 
-const createComment = () => {
+export const createComment = () => {
   let id = 1;
   const indexMessageArr = getRandomInteger(0, MESSAGES.length - 1);
   const indexNameArr = getRandomInteger(0, NAMES.length - 1);
@@ -38,7 +38,7 @@ const numComments = getRandomInteger(MIN_COMMENTS, MAX_COMMENTS);
 
 const numLikes = getRandomInteger(MIN_LIKES, MAX_LIKES);
 
-const createPhoto = () => {
+export const createPhoto = () => {
   let id = 1;
   return () => {
     const photo = {};
@@ -52,6 +52,6 @@ const createPhoto = () => {
   };
 };
 
-const photoArray = () => Array.from({length: ARRAY_LENGTH}, createPhoto);
+export const getPhotoArray = () => Array.from({length: ARRAY_LENGTH}, createPhoto);
 
-export { MESSAGES, NAMES, createPhoto, createComment, photoArray };
+

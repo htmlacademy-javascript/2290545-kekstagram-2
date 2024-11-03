@@ -1,4 +1,4 @@
-const getRandomInteger = (a, b) => {
+export const getRandomInteger = (a, b) => {
   const lower = Math.ceil(Math.min(a, b));
   const upper = Math.floor(Math.max(a, b));
   let previousResult = -1;
@@ -12,4 +12,4 @@ const getRandomInteger = (a, b) => {
   };
 };
 
-export {getRandomInteger};
+
