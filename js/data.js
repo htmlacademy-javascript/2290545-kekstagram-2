@@ -1,4 +1,4 @@
-import {getRandomInteger} from './utils';
+import {getRandomInteger} from './utils.js';
 
 export const MESSAGES = [
   'Всё отлично!',
@@ -43,15 +43,15 @@ export const createPhoto = () => {
   return () => {
     const photo = {};
     photo.id = id;
-    photo.url = `$photos/${id}`;
+    photo.url = `photos/${id}`;
     photo.description = `Фото №${id}`;
-    photo.likes = numLikes;
+    photo.likes = numLikes();
     photo.comments = Array.from({length: numComments()}, createComment());
     id++;
     return photo;
   };
 };
 
-export const getPhotoArray = () => Array.from({length: ARRAY_LENGTH}, createPhoto);
+export const getPhotoArray = () => Array.from({length: ARRAY_LENGTH}, createPhoto());
 
 
