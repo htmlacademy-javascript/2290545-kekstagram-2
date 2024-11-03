@@ -2,7 +2,7 @@ import {getPhotoArray} from './data.js';
 
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.picture');
-const createThumbnail = (photo) => {
+export const createThumbnail = (photo) => {
   const thumbnail = template.cloneNode(true);
   const image = thumbnail.querySelector('.picture__img');
   image.src = photo.url;
@@ -14,11 +14,12 @@ const createThumbnail = (photo) => {
   return thumbnail;
 };
 const fragment = document.createDocumentFragment();
-getPhotoArray.forEach((photo) => {
+getPhotoArray().forEach((photo) => {
   const thumbnail = createThumbnail(photo);
 
   fragment.appendChild(thumbnail);
 
 });
 container.appendChild(fragment);
+
 
