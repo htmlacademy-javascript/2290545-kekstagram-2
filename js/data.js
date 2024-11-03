@@ -43,7 +43,7 @@ export const createPhoto = () => {
   return () => {
     const photo = {};
     photo.id = id;
-    photo.url = `photos/${id}`;
+    photo.url = `photos/${id}.jpg`;
     photo.description = `Фото №${id}`;
     photo.likes = numLikes();
     photo.comments = Array.from({length: numComments()}, createComment());
