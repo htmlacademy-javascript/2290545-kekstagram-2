@@ -11,5 +11,6 @@ export const getRandomInteger = (a, b) => {
     return result === upper ? lower : result + 1;
   };
 };
+export const isEscapeKey = (evt) => evt.key === 'Escape';
 
-
+export const isEnterKey = (evt) => evt.key === 'Enter';
