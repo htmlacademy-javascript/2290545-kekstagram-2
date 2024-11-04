@@ -1,17 +1,26 @@
 const template = document.querySelector('#picture').content.querySelector('.picture');
-const container = document.querySelector('.picture');
+const container = document.querySelector('.pictures');
+const fragment = document.createDocumentFragment();
 
-mockedPhotos.forEach((photo) => {
-  const thubanail = template.cloneNode(true);
-
-  const image = document.querySelector('.picture__img');
+export const createThumbnail = (photo) => {
+  const thumbnail = template.cloneNode(true);
+  const image = thumbnail.querySelector('.picture__img');
   image.src = photo.url;
   image.alt = photo.description;
 
-  template.querySelector('.picture__comments').textContent = photo.comments.length;
-  template.querySelector('.picture__likes').textContent = photo.likes;
+  thumbnail.querySelector('.picture__comments').textContent = photo.comments.length;
+  thumbnail.querySelector('.picture__likes').textContent = photo.likes;
 
-  container.appendChild(template);
+  return thumbnail;
+};
 
-});
+export const renderThumbnails = (data) => {
+  data.forEach((photo) => {
+    const thumbnail = createThumbnail(photo);
+    fragment.appendChild(thumbnail);
+  });
+
+  container.appendChild(fragment);
+};
+
 
