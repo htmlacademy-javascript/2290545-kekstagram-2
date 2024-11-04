@@ -1,4 +1,5 @@
-import {getPhotoArray} from './data.js';
+import { getPhotoArray} from './data';
+
 
 const template = document.querySelector('#picture').content.querySelector('.picture');
 const container = document.querySelector('.picture');
@@ -14,7 +15,7 @@ export const createThumbnail = (photo) => {
   return thumbnail;
 };
 const fragment = document.createDocumentFragment();
-getPhotoArray().forEach((photo) => {
+getPhotoArray.forEach((photo) => {
   const thumbnail = createThumbnail(photo);
 
   fragment.appendChild(thumbnail);
