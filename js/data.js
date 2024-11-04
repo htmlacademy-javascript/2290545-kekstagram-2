@@ -38,7 +38,7 @@ const numComments = getRandomInteger(MIN_COMMENTS, MAX_COMMENTS);
 
 const numLikes = getRandomInteger(MIN_LIKES, MAX_LIKES);
 
-export const createPhoto = () => {
+const createPhoto = () => {
   let id = 1;
   return () => {
     const photo = {};
@@ -52,6 +52,6 @@ export const createPhoto = () => {
   };
 };
 
-export const getPhotoArray = () => Array.from({length: ARRAY_LENGTH}, createPhoto);
+export const getPhotoArray = () => Array.from({length: ARRAY_LENGTH}, createPhoto());
 
 

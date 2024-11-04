@@ -1,7 +1,7 @@
-import {getPhotoArray} from './data.js';
-import {createThumbnail} from './thumbnails.js';
+import { getPhotoArray } from './data.js';
+import { renderThumbnails } from './thumbnails.js';
 
-
-createThumbnail(getPhotoArray());
+const arr = getPhotoArray();
+renderThumbnails(arr);
 
 
