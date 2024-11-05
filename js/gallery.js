@@ -11,7 +11,7 @@ const commentsNode = bigPicture.querySelector('.social__comment');
 const commentTemplate = commentsNode.querySelector('.social__comment');
 const commentCount = bigPicture.querySelector('.social__comment-count');
 const commentLoader = bigPicture.querySelector('.social__comments-loader');
-const commentsCaption = bigPicture.querySelector('social__caption');
+const commentsCaption = bigPicture.querySelector('.social__caption');
 
 const onBigPictureCancelClick = () => {
   closeBigPicture();
