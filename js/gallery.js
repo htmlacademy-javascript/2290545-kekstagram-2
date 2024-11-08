@@ -1,7 +1,5 @@
-import './thumbnails.js';
-import {arr} from './main';
 import {isEscapeKey} from './utils.js';
-import {isEnterKey} from './utils.js';
+import {getPhotoArray, photoArr} from './data';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img').querySelector('img');
@@ -23,15 +21,16 @@ const onEscKeydown = (evt) => {
   }
 };
 
-const closeBigPicture = ()=> {
+const closeBigPicture = () => {
   bigPicture.classList.add('hidden');
   bigPictureCancel.removeEventListener('click', onBigPictureCancelClick);
   document.removeEventListener('keydown', onEscKeydown);
 
 };
 
-export const openBigPicture = (pictureId)=> {
-  const currentPhoto = arr.find((photo) => photo.id === Number(pictureId));
+export const openBigPicture = (pictureId) => {
+
+  const currentPhoto = photoArr.find((photo) => photo.id === Number(pictureId));
   const commentFragment = document.createDocumentFragment();
 
   likeCount.textContent = currentPhoto.likes;
@@ -39,6 +38,7 @@ export const openBigPicture = (pictureId)=> {
   commentCount.innerHTML = '';
 
   currentPhoto.comments.forEach((comment) => {
+
     const commentNode = commentTemplate.cloneNode(true);
 
     commentNode.querySelector('.social__picture').src = comment.avatar;

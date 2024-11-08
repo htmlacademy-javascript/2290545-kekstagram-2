@@ -53,5 +53,8 @@ const createPhoto = () => {
 };
 
 export const getPhotoArray = () => Array.from({length: ARRAY_LENGTH}, createPhoto());
+console.log(getPhotoArray());
+
+export const photoArr = getPhotoArray();
 
 
