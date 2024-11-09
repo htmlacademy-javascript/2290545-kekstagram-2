@@ -1,15 +1,15 @@
 import {isEscapeKey} from './utils.js';
-import {getPhotoArray, photoArr} from './data';
+import {photoArr} from './data.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img').querySelector('img');
 const bigPictureCancel = bigPicture.querySelector('.big-picture__cancel');
 const likeCount = bigPicture.querySelector('.likes-count');
 const commentsNode = bigPicture.querySelector('.social__comment');
-const commentTemplate = commentsNode.querySelector('.social__comment');
 const commentCount = bigPicture.querySelector('.social__comment-count');
 const commentLoader = bigPicture.querySelector('.social__comments-loader');
 const commentsCaption = bigPicture.querySelector('.social__caption');
+const container = document.querySelector('.pictures');
 
 const onBigPictureCancelClick = () => {
   closeBigPicture();
@@ -21,12 +21,12 @@ const onEscKeydown = (evt) => {
   }
 };
 
-const closeBigPicture = () => {
+function closeBigPicture (){
   bigPicture.classList.add('hidden');
   bigPictureCancel.removeEventListener('click', onBigPictureCancelClick);
   document.removeEventListener('keydown', onEscKeydown);
 
-};
+}
 
 export const openBigPicture = (pictureId) => {
 
@@ -39,7 +39,7 @@ export const openBigPicture = (pictureId) => {
 
   currentPhoto.comments.forEach((comment) => {
 
-    const commentNode = commentTemplate.cloneNode(true);
+    const commentNode = commentsNode.cloneNode(true);
 
     commentNode.querySelector('.social__picture').src = comment.avatar;
     commentNode.querySelector('.social__picture').alt = comment.name;
@@ -58,3 +58,15 @@ export const openBigPicture = (pictureId) => {
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onEscKeydown);
 };
+
+function onContainerClick(evt) {
+  const currentPicture = evt.target.closest('.picture');
+
+  if (currentPicture) {
+    openBigPicture(currentPicture.dataset.pictureID);
+  }
+}
+
+export function initGallery() {
+  container.addEventListener('click', onContainerClick);
+}
