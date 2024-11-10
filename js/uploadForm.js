@@ -11,8 +11,12 @@ const commentInput = form.querySelector('.text__description');
 const onEditorReset = () => closeEditor();
 
 const onDocumentKeydown = (evt) => {
-  if (isEscapeKey(evt)) {
+  if (isEscapeKey(evt)
+    && !evt.target.classList.contains('text__hashtags')
+    && !evt.target.classList.contains('text__description')
+  ) {
     evt.preventDefault();
+
     closeEditor();
   }
 };
@@ -33,30 +37,13 @@ export const initUploadModal = () => {
   });
 };
 
-// const pristine = new Pristine(form, {
-//   classTo: 'img-upload__field-wrapper'
-// });
+const pristine = new Pristine(form, {
+  classTo: 'img-upload__field-wrapper',
+  errorClass: 'img-upload__field-wrapper--error',
+  errorTextParent: 'img-upload__field-wrapper',
+});
 
-// pristine.addValidator(hashtagInput, (value) => /\d/.test(value));
+pristine.addValidator(hashtagInput, (value) =>/^#[a-zа-яё0-9]{1,19}$/i.test(value));
 
-// function validateComment(value) {
-//   return value.length <= 140;
-// }
-//
-// pristine.addValidator(
-//   form.querySelector('#social__footer-text'),
-//   validateComment,
-//   'До 140 символов'
-// );
-//
-//
-// function validateHashtag(value) {
-//   const unit = form.querySelector('#text__hashtags');
-//   return /^#[a-zа-яё0-9]{1,19}$/i;
-// }
-//
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   pristine.validate();
-// });
+pristine.addValidator(commentInput, (value) => value.length <= 140);
 
