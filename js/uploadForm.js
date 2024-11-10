@@ -1,26 +1,62 @@
+import {isEscapeKey} from './utils.js';
+
 const form = document.querySelector('.img-upload__form');
+const pageBody = document.querySelector('body');
+const uploadFile = form.querySelector('#upload-file');
+const editorForm = form.querySelector('.img-upload__overlay');
+const editorReset = editorForm.querySelector('.img-upload__cancel');
+const hashtagInput = form.querySelector('.text__hashtags');
+const commentInput = form.querySelector('.text__description');
 
-const pristine = new Pristine(form);
+const onEditorReset = () => closeEditor();
 
-function validateComment (value) {
-  return value.length <= 140;
+const onDocumentKeydown = (evt) => {
+  if (isEscapeKey(evt)) {
+    evt.preventDefault();
+    closeEditor();
+  }
+};
+
+function closeEditor() {
+  editorForm.classList.add('hidden');
+  pageBody.classList.remove('modal-open');
+  document.removeEventListener('keydown', onDocumentKeydown);
+  editorReset.removeEventListener('click', onEditorReset);
+  uploadFile.value = '';
 }
 
-pristine.addValidator(
-  form.querySelector('#social__footer-text'),
-  validateComment,
-  'До 140 символов'
-);
+export const initUploadModal = () => {
+  uploadFile.addEventListener('change', () => {
+    editorForm.classList.remove('hidden');
+    pageBody.classList.add('modal-open');
+    editorReset.addEventListener('click', onEditorReset);
+  });
+};
 
-const hashtag = form.querySelector('#text__hashtags');
+// const pristine = new Pristine(form, {
+//   classTo: 'img-upload__field-wrapper'
+// });
 
-function validateHashtag (value) {
-  const unit = form.querySelector('#text__hashtags');
-  return /^#[a-zа-яё0-9]{1,19}$/i;
-}
+// pristine.addValidator(hashtagInput, (value) => /\d/.test(value));
 
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  pristine.validate();
-});
+// function validateComment(value) {
+//   return value.length <= 140;
+// }
+//
+// pristine.addValidator(
+//   form.querySelector('#social__footer-text'),
+//   validateComment,
+//   'До 140 символов'
+// );
+//
+//
+// function validateHashtag(value) {
+//   const unit = form.querySelector('#text__hashtags');
+//   return /^#[a-zа-яё0-9]{1,19}$/i;
+// }
+//
+// form.addEventListener('submit', (e) => {
+//   e.preventDefault();
+//   pristine.validate();
+// });
 
