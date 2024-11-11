@@ -28,8 +28,8 @@ const PRISTINE_CONFIG = {
 const onEditorReset = () => closeEditor();
 
 const shouldCloseEditor = (evt) => isEscapeKey(evt) &&
-    !evt.target.classList.contains('text__hashtags') &&
-    !evt.target.classList.contains('text__description');
+  !evt.target.classList.contains('text__hashtags') &&
+  !evt.target.classList.contains('text__description');
 
 const onDocumentKeydown = (evt) => {
   if (shouldCloseEditor(evt)) {
@@ -46,17 +46,19 @@ function closeEditor() {
   uploadFile.value = '';
 }
 
-export const initUploadModal = () => {
+function openEditor() {
   uploadFile.addEventListener('change', () => {
     editorForm.classList.remove(CLASSES.HIDDEN);
     pageBody.classList.add(CLASSES.MODAL_OPEN);
     editorReset.addEventListener('click', onEditorReset);
   });
-};
+}
+
+export const initUploadModal = () => openEditor();
 
 const pristine = new Pristine(form, {PRISTINE_CONFIG});
 
-pristine.addValidator(hashtagInput, (value) =>VALIDATION_RULES.HASHTAG_PATTERN.test(value));
+pristine.addValidator(hashtagInput, (value) => VALIDATION_RULES.HASHTAG_PATTERN.test(value));
 
 pristine.addValidator(commentInput, (value) => value.length <= VALIDATION_RULES.MAX_COMMENT_LENGTH);
 
