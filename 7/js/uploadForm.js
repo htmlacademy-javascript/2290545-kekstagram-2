@@ -111,6 +111,7 @@ function openEditor() {
     editorForm.classList.remove(CLASSES.HIDDEN);
     pageBody.classList.add(CLASSES.MODAL_OPEN);
     editorReset.addEventListener('click', onEditorReset);
+    document.addEventListener('keydown', onDocumentKeydown);
   });
 }
 
