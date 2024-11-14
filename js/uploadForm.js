@@ -1,12 +1,20 @@
 import {hasDuplicates, isEscapeKey} from './utils.js';
+import {onEffectRadioBtnClick} from './effects-slider.js';
 
-const form = document.querySelector('.img-upload__form');
+export const form = document.querySelector('.img-upload__form');
 const pageBody = document.querySelector('body');
 const uploadFile = form.querySelector('#upload-file');
 const editorForm = form.querySelector('.img-upload__overlay');
 const editorReset = editorForm.querySelector('.img-upload__cancel');
 const hashtagInput = form.querySelector('.text__hashtags');
 const commentInput = form.querySelector('.text__description');
+export const img = form.querySelector('.img-upload__preview img');
+const bigger = form.querySelector('.scale__control--bigger');
+const smaller = form.querySelector('.scale__control--smaller');
+const scaleControl = form.querySelector('.scale__control--value');
+const effectList = form.querySelector('.effects__list');
+
+const SCALE_STEP = 0.25;
 
 const CLASSES = {
   HIDDEN: 'hidden',
@@ -28,6 +36,26 @@ const PRISTINE_CONFIG = {
 };
 
 let errorText = '';
+let scale = 1;
+
+const onSmallerClick = () => {
+  if (scale > SCALE_STEP) {
+    img.style.transform = `scale(${scale -= SCALE_STEP})`;
+    scaleControl.value = `${scale * 100}%`;
+  }
+};
+
+smaller.addEventListener('click', onSmallerClick);
+
+const onBiggerClick = () => {
+  if (scale < 1) {
+    img.style.transform = `scale(${scale += SCALE_STEP})`;
+    scaleControl.value = `${scale * 100}%`;
+  }
+};
+
+bigger.addEventListener('click', onBiggerClick);
+
 
 const validateHashtags = (value) => {
   errorText = '';
@@ -114,6 +142,8 @@ function openEditor() {
     document.addEventListener('keydown', onDocumentKeydown);
   });
 }
+
+effectList.addEventListener('change', onEffectRadioBtnClick);
 
 export const initUploadModal = () => openEditor();
 
