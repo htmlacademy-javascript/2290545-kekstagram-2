@@ -47,8 +47,8 @@ export const effects = {
 
 const getChromeStyleFilter = (value) => `grayscale(${value})`;
 const getSepiaStyleFilter = (value) => `sepia(${value})`;
-const getMarvinStyleFilter = (value) => `invert(${value})`;
-const getPhobosStyleFilter = (value) => `blur(${value})`;
+const getMarvinStyleFilter = (value) => `invert(${value}%)`;
+const getPhobosStyleFilter = (value) => `blur(${value}px)`;
 const getHeatStyleFilter = (value) => `brightness(${value})`;
 
 export const styleFilterByEffects = {
