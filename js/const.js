@@ -1,5 +1,26 @@
 export const EFFECT_LEVEL_MAX = 100;
 
+export const SCALE_STEP = 0.25;
+
+export const CLASSES = {
+  HIDDEN: 'hidden',
+  MODAL_OPEN: 'modal-open',
+  ERROR: 'img-upload__field-wrapper--error',
+};
+
+export const VALIDATION_RULES = {
+  HASHTAG_PATTERN: /^#[a-zа-яё0-9]{1,19}$/i,
+  HASHTAGS_MAX: 5,
+  HASHTAG_LENGTH_MAX: 20,
+  MAX_COMMENT_LENGTH: 140,
+};
+
+export const PRISTINE_CONFIG = {
+  classTo: 'img-upload__field-wrapper',
+  errorClass: CLASSES.ERROR,
+  errorTextParent: 'img-upload__field-wrapper',
+};
+
 const objectChromeSepia = {
   range: {
     min: 0,

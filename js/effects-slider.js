@@ -1,5 +1,5 @@
 import {form, img} from './uploadForm.js';
-import {EFFECT_LEVEL_MAX, effects, styleFilterByEffects} from './const.js';
+import {CLASSES, EFFECT_LEVEL_MAX, effects, styleFilterByEffects} from './const.js';
 import {getEffectSelector} from './utils.js';
 
 const slider = form.querySelector('.effect-level__slider');
@@ -14,7 +14,7 @@ const getUpdateSliderOptions = (effect, sliderElement) =>
 
 export const resetFilter = () => {
   img.style.removeProperty('filter');
-  effectLevel.classList.add('hidden');
+  effectLevel.classList.add(CLASSES.HIDDEN);
   img.classList.replace(selectorImg, 'effect__preview--none');
 };
 
@@ -42,7 +42,7 @@ slider.noUiSlider.on('update', () => {
   effectRadioBtn.forEach((item) => {
     if(item.checked) {
       if (item.value !== 'none') {
-        effectLevel.classList.remove('hidden');
+        effectLevel.classList.remove(CLASSES.HIDDEN);
         img.style.filter = styleFilterByEffects[item.value](effectLevelInput.value);
       } else {
         resetFilter();

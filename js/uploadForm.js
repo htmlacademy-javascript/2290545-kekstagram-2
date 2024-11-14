@@ -1,5 +1,6 @@
 import {hasDuplicates, isEscapeKey} from './utils.js';
 import {onEffectRadioBtnClick} from './effects-slider.js';
+import {CLASSES, PRISTINE_CONFIG, SCALE_STEP, VALIDATION_RULES} from './const.js';
 
 export const form = document.querySelector('.img-upload__form');
 const pageBody = document.querySelector('body');
@@ -14,26 +15,6 @@ const smaller = form.querySelector('.scale__control--smaller');
 const scaleControl = form.querySelector('.scale__control--value');
 const effectList = form.querySelector('.effects__list');
 
-const SCALE_STEP = 0.25;
-
-const CLASSES = {
-  HIDDEN: 'hidden',
-  MODAL_OPEN: 'modal-open',
-  ERROR: 'img-upload__field-wrapper--error',
-};
-
-const VALIDATION_RULES = {
-  HASHTAG_PATTERN: /^#[a-zа-яё0-9]{1,19}$/i,
-  HASHTAGS_MAX: 5,
-  HASHTAG_LENGTH_MAX: 20,
-  MAX_COMMENT_LENGTH: 140,
-};
-
-const PRISTINE_CONFIG = {
-  classTo: 'img-upload__field-wrapper',
-  errorClass: CLASSES.ERROR,
-  errorTextParent: 'img-upload__field-wrapper',
-};
 
 let errorText = '';
 let scale = 1;
