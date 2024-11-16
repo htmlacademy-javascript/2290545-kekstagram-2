@@ -2,7 +2,7 @@ import {CLASSES, EFFECT_LEVEL_MAX, effects, styleFilterByEffects} from './const.
 import {getEffectSelector} from './utils.js';
 
 const form = document.querySelector('.img-upload__form');
-const img = document.querySelector('.img-upload__preview');
+const img = form.querySelector('.img-upload__preview');
 const slider = form.querySelector('.effect-level__slider');
 const effectLevel = form.querySelector('.img-upload__effect-level');
 const effectLevelInput = form.querySelector('.effect-level__value');
