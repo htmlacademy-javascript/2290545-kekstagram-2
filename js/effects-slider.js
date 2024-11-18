@@ -1,5 +1,17 @@
 import {CLASSES, EFFECT_LEVEL_MAX, effects, styleFilterByEffects} from './const.js';
-import {getEffectSelector} from './utils.js';
+
+
+const getEffectSelector = (currentInputId) => {
+  const selectors = {
+    'effect-none': 'effect_preview--none',
+    'effect-chrome': 'effect_preview--chrome',
+    'effect-sepia': 'effect_preview--sepia',
+    'effect-marvin': 'effect_preview--marvin',
+    'effect-phobos': 'effect_preview--phobos',
+    'effect-heat': 'effect_preview--heat',
+  };
+  return selectors[currentInputId];
+};
 
 const form = document.querySelector('.img-upload__form');
 const img = form.querySelector('.img-upload__preview');
@@ -12,6 +24,7 @@ const effectRadioBtn = document.querySelectorAll('.effects__radio');
 
 const getUpdateSliderOptions = (effect, sliderElement) =>
   sliderElement.noUiSlider.updateOptions(effects[effect]);
+
 
 export const resetFilter = () => {
   img.style.removeProperty('filter');

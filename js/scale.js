@@ -1,11 +1,11 @@
 import {SCALE_STEP} from './const.js';
 
 const form = document.querySelector('.img-upload__form');
-const img = form.querySelector('.img-upload__preview');
+const img = form.querySelector('.effects__preview');
 const bigger = form.querySelector('.scale__control--bigger');
 const smaller = form.querySelector('.scale__control--smaller');
 const scaleControl = form.querySelector('.scale__control--value');
-
+console.log(img);
 
 let scale = 1;
 

@@ -15,15 +15,5 @@ export const isEscapeKey = (evt) => evt.key === 'Escape';
 
 export const hasDuplicates = (inputItems) => new Set(inputItems).size !== inputItems.length;
 
-export const getEffectSelector = (currentInputId) => {
-  const selectors = {
-    'effect-none': 'effect_preview--none',
-    'effect-chrome': 'effect_preview--chrome',
-    'effect-sepia': 'effect_preview--sepia',
-    'effect-marvin': 'effect_preview--marvin',
-    'effect-phobos': 'effect_preview--phobos',
-    'effect-heat': 'effect_preview--heat',
-  };
-  return selectors[currentInputId];
-};
+
 
