@@ -1,4 +1,6 @@
 import {hasDuplicates, isEscapeKey} from './utils.js';
+import {onEffectRadioBtnClick} from './effects-slider.js';
+import {CLASSES, PRISTINE_CONFIG, VALIDATION_RULES} from './const.js';
 
 const form = document.querySelector('.img-upload__form');
 const pageBody = document.querySelector('body');
@@ -7,25 +9,7 @@ const editorForm = form.querySelector('.img-upload__overlay');
 const editorReset = editorForm.querySelector('.img-upload__cancel');
 const hashtagInput = form.querySelector('.text__hashtags');
 const commentInput = form.querySelector('.text__description');
-
-const CLASSES = {
-  HIDDEN: 'hidden',
-  MODAL_OPEN: 'modal-open',
-  ERROR: 'img-upload__field-wrapper--error',
-};
-
-const VALIDATION_RULES = {
-  HASHTAG_PATTERN: /^#[a-zа-яё0-9]{1,19}$/i,
-  HASHTAGS_MAX: 5,
-  HASHTAG_LENGTH_MAX: 20,
-  MAX_COMMENT_LENGTH: 140,
-};
-
-const PRISTINE_CONFIG = {
-  classTo: 'img-upload__field-wrapper',
-  errorClass: CLASSES.ERROR,
-  errorTextParent: 'img-upload__field-wrapper',
-};
+const effectList = form.querySelector('.effects__list');
 
 let errorText = '';
 
@@ -114,6 +98,8 @@ function openEditor() {
     document.addEventListener('keydown', onDocumentKeydown);
   });
 }
+
+effectList.addEventListener('change', onEffectRadioBtnClick);
 
 export const initUploadModal = () => openEditor();
 

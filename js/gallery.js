@@ -1,5 +1,6 @@
 import {isEscapeKey} from './utils.js';
 import {photoArr} from './data.js';
+import {CLASSES} from './const.js';
 
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img').querySelector('img');
@@ -22,7 +23,7 @@ const onEscKeydown = (evt) => {
 };
 
 function closeBigPicture (){
-  bigPicture.classList.add('hidden');
+  bigPicture.classList.add(CLASSES.HIDDEN);
   bigPictureCancel.removeEventListener('click', onBigPictureCancelClick);
   document.removeEventListener('keydown', onEscKeydown);
 
@@ -50,12 +51,12 @@ export const openBigPicture = (pictureId) => {
 
   commentCount.appendChild(commentFragment);
   commentsCaption.textContent = currentPhoto.description;
-  commentCount.classList.add('hidden');
-  commentLoader.classList.add('hidden');
+  commentCount.classList.add(CLASSES.HIDDEN);
+  commentLoader.classList.add(CLASSES.HIDDEN);
 
-  bigPicture.classList.remove('hidden');
+  bigPicture.classList.remove(CLASSES.HIDDEN);
   bigPictureCancel.addEventListener('click', onBigPictureCancelClick);
-  document.body.classList.add('modal-open');
+  document.body.classList.add(CLASSES.MODAL_OPEN);
   document.addEventListener('keydown', onEscKeydown);
 };
 
